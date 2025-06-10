@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html data-wf-domain="museum-digitization.webflow.io" data-wf-page="670029dfe54e815631acec0c" data-wf-site="670029dfe54e815631acec08" lang="en">
+<html data-wf-domain="museum-digitisation.webflow.io" data-wf-page="670029dfe54e815631acec0c" data-wf-site="670029dfe54e815631acec08" lang="en">
     <head>
         <meta charset="utf-8"/>
-        <title>World Museum Digitization Solution | Advanced Technology Partnership</title>
-        <meta content="World Museum Digitization Solution | Advanced Technology Partnership" property="og:title"/>
+        <title>World Museum Partnership Proposal</title>
+        <meta content="World Museum Partnership Proposal" property="og:title"/>
         <meta content="width=device-width, initial-scale=1" name="viewport"/>
         <meta content="Webflow" name="generator"/>
         <link href="https://cdn.prod.website-files.com/670029dfe54e815631acec08/css/electrax.webflow.shared.cfbe87994.min.css" rel="stylesheet" type="text/css"/>
@@ -31,6 +31,203 @@
             /* Hide Webflow badge */
             .w-webflow-badge {
                 display: none !important;
+            }
+
+            /* Modal Overlay Styles */
+            .modal-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                backdrop-filter: blur(8px);
+                z-index: 9999;
+                display: none;
+                opacity: 0;
+                transition: all 0.3s ease;
+            }
+
+            .modal-overlay.active {
+                display: flex;
+                opacity: 1;
+                align-items: center;
+                justify-content: center;
+                padding: 2rem;
+            }
+
+            .modal-content {
+                background: white;
+                border-radius: 16px;
+                max-width: 900px;
+                width: 100%;
+                max-height: 90vh;
+                overflow-y: auto;
+                transform: translateY(50px) scale(0.9);
+                transition: all 0.3s ease;
+                box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+                position: relative;
+            }
+
+            .modal-overlay.active .modal-content {
+                transform: translateY(0) scale(1);
+            }
+
+            .modal-header {
+                padding: 2rem 2rem 1rem 2rem;
+                border-bottom: 1px solid #eee;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                border-radius: 16px 16px 0 0;
+                position: relative;
+            }
+
+            .modal-close {
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+                background: rgba(255, 255, 255, 0.2);
+                border: none;
+                color: white;
+                font-size: 1.5rem;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.2s ease;
+            }
+
+            .modal-close:hover {
+                background: rgba(255, 255, 255, 0.3);
+                transform: scale(1.1);
+            }
+
+            .modal-body {
+                padding: 2rem;
+            }
+
+            .modal-section {
+                margin-bottom: 2rem;
+                padding-bottom: 1.5rem;
+                border-bottom: 1px solid #f0f0f0;
+            }
+
+            .modal-section:last-child {
+                border-bottom: none;
+                margin-bottom: 0;
+            }
+
+            .modal-section h3 {
+                color: #333;
+                margin-bottom: 1rem;
+                font-size: 1.25rem;
+                font-weight: 600;
+            }
+
+            .modal-section p {
+                color: #666;
+                line-height: 1.6;
+                margin-bottom: 1rem;
+            }
+
+            .object-categories {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1rem;
+                margin-top: 1rem;
+            }
+
+            .category-item {
+                background: #f8f9fa;
+                padding: 1rem;
+                border-radius: 8px;
+                border-left: 4px solid #667eea;
+            }
+
+            .category-name {
+                font-weight: 600;
+                color: #333;
+                margin-bottom: 0.25rem;
+            }
+
+            .category-stats {
+                font-size: 0.9rem;
+                color: #666;
+            }
+
+            .requirements-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 0.75rem;
+                margin-top: 1rem;
+            }
+
+            .requirement-item {
+                background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+                color: white;
+                padding: 0.75rem 1rem;
+                border-radius: 6px;
+                font-size: 0.9rem;
+                text-align: center;
+                font-weight: 500;
+            }
+
+            .considerations-list {
+                margin-top: 1rem;
+            }
+
+            .consideration-item {
+                background: #fff3cd;
+                border: 1px solid #ffeaa7;
+                border-radius: 6px;
+                padding: 1rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .consideration-title {
+                font-weight: 600;
+                color: #856404;
+                margin-bottom: 0.5rem;
+            }
+
+            .consideration-text {
+                color: #856404;
+                font-size: 0.9rem;
+                line-height: 1.5;
+            }
+
+            .solution-highlight {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                padding: 1.5rem;
+                border-radius: 12px;
+                margin-top: 1rem;
+            }
+
+            .solution-highlight h4 {
+                margin-bottom: 0.75rem;
+                font-size: 1.1rem;
+            }
+
+            @media (max-width: 768px) {
+                .modal-overlay {
+                    padding: 1rem;
+                }
+                
+                .modal-header, .modal-body {
+                    padding: 1.5rem 1rem;
+                }
+                
+                .object-categories {
+                    grid-template-columns: 1fr;
+                }
+                
+                .requirements-grid {
+                    grid-template-columns: 1fr;
+                }
             }
         </style>
     </head>
@@ -66,10 +263,10 @@
             <div class="container">
                 <div class="hp-hero-wrapper">
                     <div class="hp-hero_text-wrapper">
-                        <h1 data-w-id="56e548e9-1f27-74c2-8292-27a5ee61b477" style="opacity:0;-webkit-transform:translate3d(0, 3rem, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 3rem, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 3rem, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 3rem, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="display-heading-1">Transforming Cultural Heritage Through Advanced Digitization</h1>
+                        <h1 data-w-id="56e548e9-1f27-74c2-8292-27a5ee61b477" style="opacity:0;-webkit-transform:translate3d(0, 3rem, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 3rem, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 3rem, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 3rem, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="display-heading-1">Transforming Cultural Heritage Through Advanced Digitisation</h1>
                         <div class="hero-text-wrapper">
                             <p words-slide-up="" text-split="" data-w-id="56e548e9-1f27-74c2-8292-27a5ee61b47a" style="opacity:0;-webkit-transform:translate3d(0, 3rem, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 3rem, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 3rem, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 3rem, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="paragraph-18">
-                                A comprehensive 5-year solution to digitize 25 million specimens and cultural artifacts using cutting-edge vision capture, AI/ML analysis, and RFID tracking technology. Preserving history while pioneering the future of digital heritage.<br/>
+                                A comprehensive 5-year solution to digitise 25 million specimens and cultural artifacts using cutting-edge vision capture, AI/ML analysis, and RFID tracking technology. Preserving history while pioneering the future of digital heritage.<br/>
                             </p>
                         </div>
                     </div>
@@ -91,10 +288,10 @@
             <div class="w-layout-blockcontainer container w-container">
                 <div class="heading-max-width-wrapper">
                     <div class="label-heading">The Challenge</div>
-                    <h2 id="w-node-f1b16483-e486-9802-6463-c1db91fb028d-31acec0c" class="heading-h2">Digitizing 25 Million Cultural Treasures</h2>
-                    <div class="paragraph-18 margin-bottom-1rem">The World Museum faces the monumental task of digitizing diverse collections spanning 8 object types, while maintaining preservation standards, ensuring accurate tracking, and providing global access to researchers and communities worldwide.</div>
-                    <a href="#technology" class="button-tertiary top-padding w-inline-block">
-                        <div>See Our Technology</div>
+                    <h2 id="w-node-f1b16483-e486-9802-6463-c1db91fb028d-31acec0c" class="heading-h2">Digitising 25 Million Cultural Treasures</h2>
+                    <div class="paragraph-18 margin-bottom-1rem">There exists an ever-growing dependence on technology and the digital world throughout society, and as such, there exists an expectation of digital access to all aspects of life, including history (Lareina Yee, 2024). To not be left behind and maintain relevance and connection, the World Museum is seeking to digitise its approximately 25 million, and growing, scientific specimens and artefacts obtained from across the globe over five years (Mandakovic, 2023).</div>
+                    <a href="#" id="learnMoreBtn" class="button-tertiary top-padding w-inline-block">
+                        <div>Learn More</div>
                         <img src="https://cdn.prod.website-files.com/670029dfe54e815631acec08/6700320d92130787c4c76b48_Button%20Arrow.svg" loading="lazy" alt="" class="inline-link-image"/>
                     </a>
                 </div>
@@ -102,16 +299,16 @@
                     <div id="w-node-f1b16483-e486-9802-6463-c1db91fb0292-31acec0c" class="card card-large-padding">
                         <img src="https://idsb.tmgrup.com.tr/ly/uploads/images/2022/02/11/181993.jpg" loading="lazy" alt="Museum collection scale" class="card-image-full"/>
                         <div class="large-horizontal-card-wrapper">
-                            <h3 class="heading-h3">Massive Scale & Diversity</h3>
+                            <h3 class="heading-h3" style="color: white; margin-top: -4%;">Massive Scale & Diversity</h3>
                             <div class="large-card-text-wrapper">
                                 <h4 class="heading-h4">25+ Million Objects Across 8 Categories</h4>
-                                <div class="paragraph-18">From delicate pinned insects to large assemblages, frozen tissue samples to historical photographs - each object type requires specialized handling and digitization techniques to ensure preservation and accuracy.</div>
+                                <div class="paragraph-18">From delicate pinned insects to large assemblages, frozen tissue samples to historical photographs - each object type requires specialized handling and digitisation techniques to ensure preservation and accuracy.</div>
                             </div>
                         </div>
                     </div>
                     <div id="w-node-f1b16483-e486-9802-6463-c1db91fb0297-31acec0c" class="card">
                         <div class="card-small-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=400&h=300&fit=crop&crop=center" loading="lazy" alt="Current system limitations" class="card-small-image"/>
+                            <img src="https://media.istockphoto.com/id/2196257923/photo/abstract-view-of-blue-translucent-acrylic-sheets-in-dynamic-arrangement.jpg?s=612x612&w=0&k=20&c=Qj3QvkY1KPY9f7CbvwXrp9htTNkCcYoHlBWfxXXVmaQ=" loading="lazy" alt="Current system limitations" class="card-small-image"/>
                         </div>
                         <div class="card-small-text-wrapper">
                             <h3 class="heading-h4">Current System Limitations</h3>
@@ -120,16 +317,111 @@
                     </div>
                     <div id="w-node-c7ae37b6-6c23-b639-ac13-74c4818208ea-31acec0c" class="card card-black">
                         <div class="card-small-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=400&h=300&fit=crop&crop=center" loading="lazy" alt="Future-ready solution" class="card-small-image"/>
+                            <img src="https://i0.wp.com/blog.brightcities.city/wp-content/uploads/2020/09/abc.jpg?resize=900%2C600&ssl=1" loading="lazy" alt="Future-ready solution" class="card-small-image"/>
                         </div>
                         <div class="card-small-text-wrapper">
                             <h3 class="heading-h4 heading-h4-inverse">Future-Ready Solution</h3>
-                            <div class="paragraph-16 paragraph-16-inverse">Our integrated approach combines advanced vision capture, AI-powered analysis, and comprehensive tracking to create a sustainable, scalable digitization system that serves global communities.</div>
+                            <div class="paragraph-16 paragraph-16-inverse">Our integrated approach combines advanced vision capture, AI-powered analysis, and comprehensive tracking to create a sustainable, scalable digitisation system that serves global communities.</div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- Learn More Modal -->
+        <div id="learnMoreModal" class="modal-overlay">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 style="margin: 0; font-size: 1.5rem;">Comprehensive Digitisation Overview</h2>
+                    <button class="modal-close" id="closeModal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-section">
+                        <h3>Our Vision for Digital Transformation</h3>
+                        <p>This undertaking will enable the World Museum to not only preserve its collection but also further scientific research, collaborate with other institutions, improve the management of its assets, and allow for the digital repatriation of significant cultural artefacts to their communities. The digitisation of the World Museum will expand its reach across the World and promote a true sense of interconnectedness between people and the past.</p>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Collection Overview: 8 Object Categories</h3>
+                        <p>The museum houses 25 million objects across 8 distinct categories, each requiring specialized digitisation approaches:</p>
+                        <div class="object-categories">
+                            <div class="category-item">
+                                <div class="category-name">Pinned Objects</div>
+                                <div class="category-stats">5,000,000 items (20%)</div>
+                            </div>
+                            <div class="category-item">
+                                <div class="category-name">Small Dry Objects</div>
+                                <div class="category-stats">7,500,000 items (30%)</div>
+                            </div>
+                            <div class="category-item">
+                                <div class="category-name">Large/Heavy Dry Objects</div>
+                                <div class="category-stats">50,000 items (0.2%)</div>
+                            </div>
+                            <div class="category-item">
+                                <div class="category-name">Liquid Preserved Objects</div>
+                                <div class="category-stats">10,000,000 items (40%)</div>
+                            </div>
+                            <div class="category-item">
+                                <div class="category-name">Frozen Tissue Samples</div>
+                                <div class="category-stats">375,000 items (1.5%)</div>
+                            </div>
+                            <div class="category-item">
+                                <div class="category-name">Paper Based Objects</div>
+                                <div class="category-stats">500,000 items (2%)</div>
+                            </div>
+                            <div class="category-item">
+                                <div class="category-name">Assemblages</div>
+                                <div class="category-stats">250,000 items (1%)</div>
+                            </div>
+                            <div class="category-item">
+                                <div class="category-name">Audio Visual Objects</div>
+                                <div class="category-stats">1,250,000 items (5%)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>8 Key Business Requirements</h3>
+                        <p>Our solution addresses all critical museum digitisation needs:</p>
+                        <div class="requirements-grid">
+                            <div class="requirement-item">Populated Asset Register</div>
+                            <div class="requirement-item">Digital Location Tracking</div>
+                            <div class="requirement-item">Standardized Processes</div>
+                            <div class="requirement-item">High-Quality Imaging</div>
+                            <div class="requirement-item">Enriched Context</div>
+                            <div class="requirement-item">Conservation Focus</div>
+                            <div class="requirement-item">Global Access</div>
+                            <div class="requirement-item">Performant Technology</div>
+                        </div>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Special Considerations</h3>
+                        <div class="considerations-list">
+                            <div class="consideration-item">
+                                <div class="consideration-title">Cultural Collections</div>
+                                <div class="consideration-text">Artefacts from Indigenous communities should be able to be returned or loaned to these communities, and information gathering from remote communities should be considered.</div>
+                            </div>
+                            <div class="consideration-item">
+                                <div class="consideration-title">Environmental Impact</div>
+                                <div class="consideration-text">Aim to reduce the museum's future carbon impact, which is a large concern of stakeholders, especially for a digitisation process.</div>
+                            </div>
+                            <div class="consideration-item">
+                                <div class="consideration-title">Enhanced Tracking</div>
+                                <div class="consideration-text">Currently, an ineffective barcoding system is in place. The goal is to accurately track the entire collection of artefacts to reduce theft and misplacement.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-section">
+                        <div class="solution-highlight">
+                            <h4>Our Three-Pillar Solution</h4>
+                            <p style="margin: 0; color: rgba(255,255,255,0.95);">Our digitisation proposal meets all of the above needs and focuses on three key areas: <strong>vision capture technologies</strong>, <strong>Artificial Intelligence/Machine Learning (AI/ML) analysis</strong> of data, and <strong>sensor-based location tracking</strong>. This future-proof approach maximizes information capture while minimizing handling time and costs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Three Technology Pillars -->
         <section class="section">
@@ -137,7 +429,7 @@
                 <div class="w-layout-grid _2-column-grid">
                     <h2 class="heading-h2 margin-bottom-1-5rem">Three Pillars of Innovation</h2>
                     <div>
-                        <div class="paragraph-18">Our solution integrates cutting-edge technologies to address every aspect of museum digitization - from initial capture to long-term preservation and global access.</div>
+                        <div class="paragraph-18">Our solution integrates cutting-edge technologies to address every aspect of museum digitisation - from initial capture to long-term preservation and global access.</div>
                         <a href="#benefits" class="button-tertiary top-padding w-inline-block">
                             <div>See the Benefits</div>
                             <img src="https://cdn.prod.website-files.com/670029dfe54e815631acec08/6700320d92130787c4c76b48_Button%20Arrow.svg" loading="lazy" alt="" class="inline-link-image"/>
@@ -185,7 +477,7 @@
                         </div>
                     </div>
                     <div id="w-node-e703ca32-8563-6e07-0194-3607ddb092cd-31acec0c" class="_2-column-grid-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1628155930542-3c7a64e2c833?w=600&h=800&fit=crop&crop=center" loading="lazy" alt="3D scanning and photography equipment" class="_2-column-grid-image"/>
+                        <img src="https://t3.ftcdn.net/jpg/02/88/44/46/360_F_288444629_2hFIKeC5f3833eCMNItcpDhvwyzULTbD.jpg" loading="lazy" alt="3D scanning" class="_2-column-grid-image"/>
                     </div>
                 </div>
             </div>
@@ -257,7 +549,7 @@
                         </div>
                     </div>
                     <div id="w-node-e703ca32-8563-6e07-0194-3607ddb092cd-31acec0c" class="_2-column-grid-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=800&fit=crop&crop=center" loading="lazy" alt="RFID tracking technology" class="_2-column-grid-image"/>
+                        <img src="https://images.stockcake.com/public/5/0/b/50b54a0c-6852-4b81-9166-78e9d0a0b694_medium/analyzing-ancient-artifact-stockcake.jpg" loading="lazy" alt="RFID tracking technology" class="_2-column-grid-image"/>
                     </div>
                 </div>
             </div>
@@ -269,7 +561,11 @@
                 <div class="heading-max-width-wrapper">
                     <div class="label-heading">Implementation Timeline</div>
                     <h2 class="heading-h2">5-Year Strategic Rollout</h2>
-                    <div class="paragraph-18 margin-bottom-1rem">Our phased approach ensures systematic digitization while maintaining museum operations and artifact safety throughout the process.</div>
+                    <div class="paragraph-18 margin-bottom-1rem">Our phased approach ensures systematic digitisation while maintaining museum operations and artifact safety throughout the process.</div>
+                    <a href="#" id="timelineLearnMoreBtn" class="button-tertiary top-padding w-inline-block">
+                        <div>Learn More</div>
+                        <img src="https://cdn.prod.website-files.com/670029dfe54e815631acec08/6700320d92130787c4c76b48_Button%20Arrow.svg" loading="lazy" alt="" class="inline-link-image"/>
+                    </a>
                 </div>
                 
                 <div style="margin-top: 3rem;">
@@ -315,13 +611,83 @@
                             <h3 class="heading-h4" style="color: #6f42c1; margin-bottom: 1rem;">Year 5: Launch</h3>
                             <div class="paragraph-16">
                                 <strong>Focus:</strong> Completion and public launch<br><br>
-                                <strong>Activities:</strong> Final digitization, launch public database, quality assurance, repatriation-ready records, full system operational
+                                <strong>Activities:</strong> Final digitisation, launch public database, quality assurance, repatriation-ready records, full system operational
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- Timeline Learn More Modal -->
+        <div id="timelineLearnMoreModal" class="modal-overlay">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 style="margin: 0; font-size: 1.5rem;">Detailed Implementation Timeline</h2>
+                    <button class="modal-close" id="closeTimelineModal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-section">
+                        <h3>5-Year Strategic Implementation Plan</h3>
+                        <p>Our proposed digitisation solution will take effect over a five-year period, and below is a Gantt chart that shows the progress for the digitisation of different objects and other key components of the solution.</p>
+                        
+                        <div style="margin: 2rem auto; background: #f8f9fa; border-radius: 12px; padding: 2rem; text-align: center;">
+                            <img
+                                src="https://docs.google.com/spreadsheets/d/e/2PACX-1vR8L0lMt55H3-3TJaGLllvCMRyU_tRIM3nbfFr3po_ARK04ahMxBC0pxiaHuQ_DQ2ojl_AK-ipj7SDY/pubchart?oid=1235477712&amp;format=image"
+                                alt="Implementation Gantt Chart"
+                                style="max-width: 100%; height: auto; border-radius: 8px; border: 0;">
+                            </div>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Year 1 - Laying the Foundations</h3>
+                        <p>The first year will involve the commencement of the vision capture process and the printing and attaching of RFID tags for the following object types:</p>
+                        <div class="object-categories" style="grid-template-columns: repeat(2, 1fr);">
+                            <div class="category-item">
+                                <div class="category-name">Small Dry Objects</div>
+                                <div class="category-stats">Foundation phase</div>
+                            </div>
+                            <div class="category-item">
+                                <div class="category-name">Pinned Objects</div>
+                                <div class="category-stats">Foundation phase</div>
+                            </div>
+                            <div class="category-item">
+                                <div class="category-name">Paper-Based Objects</div>
+                                <div class="category-stats">Foundation phase</div>
+                            </div>
+                            <div class="category-item">
+                                <div class="category-name">Audio Visual Objects</div>
+                                <div class="category-stats">Foundation phase</div>
+                            </div>
+                        </div>
+                        <p>With the data obtained throughout the first year, the training of AI models on high-quality images will begin. The primary focus of the first year is on objects that do not require special handling.</p>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Year 2 - Further Digitisation</h3>
+                        <p>The second year will continue with the vision capture process for Small Dry Objects and finish the vision capture process for Paper Based Objects and Audio Visual Objects. The digitisation of the Pinned Objects will be enhanced by establishing an extra station to handle these objects.</p>
+                        <p>Additionally, AI/ML will be utilised to begin extracting data from scanned tags and labels through OCR and image analysis, and further, RFID-based tracking on all scanned objects will commence.</p>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Year 3 - The Heavy Lifting</h3>
+                        <p>The third year will begin the vision capture process on Large/Heavy Objects and Liquid Preserved Objects. During this year, AI/ML will be expanded to handle degraded text and unusual label formats, and RFID readers will be used to track and integrate movement logs for objects.</p>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Year 4 - The Finishing Touches</h3>
+                        <p>The fourth year will see the finalisation of vision capture for Liquid Preserved Objects and the commencement of vision capture for Frozen Tissue Samples, which require extra care when handling. At this stage, AI/ML will be fully integrated into the Populated Asset Register (Database), and community input will be obtained for validation and cultural enrichment purposes.</p>
+                    </div>
+
+                    <div class="modal-section">
+                        <div class="solution-highlight">
+                            <h4>Year 5 - Final Steps & Optimisation</h4>
+                            <p style="margin: 0; color: rgba(255,255,255,0.95);">In the fifth and final year, vision capture will be completed for the Frozen Tissue Samples and any remaining objects, such that a searchable, public-facing database can be launched. Further quality assurance will be undertaken throughout this final year to ensure that repatriation-ready digital records exist. Finally, the museum will launch a <strong>full digital asset register and tracking system</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Benefits Section -->
         <section id="benefits" class="section">
@@ -391,7 +757,7 @@
                         <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 2rem; border-radius: 12px; color: white;">
                             <h3 class="heading-h4" style="color: white; margin-bottom: 1rem;">Vision Capture Systems</h3>
                             <div style="font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem;">$39,000 AUD</div>
-                            <div class="paragraph-16" style="color: rgba(255,255,255,0.9);">High-end scanning equipment, camera systems, and specialized lighting for professional-grade digitization across all object types.</div>
+                            <div class="paragraph-16" style="color: rgba(255,255,255,0.9);">High-end scanning equipment, camera systems, and specialized lighting for professional-grade digitisation across all object types.</div>
                         </div>
                         <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); padding: 2rem; border-radius: 12px; color: white;">
                             <h3 class="heading-h4" style="color: white; margin-bottom: 1rem;">AI/ML Systems</h3>
@@ -425,8 +791,8 @@
             <div class="w-layout-blockcontainer container w-container">
                 <div class="heading-max-width-wrapper">
                     <div class="label-heading">Advanced Offerings</div>
-                    <h2 class="heading-h2">Beyond Standard Digitization</h2>
-                    <div class="paragraph-18 margin-bottom-1rem">Our solution goes beyond basic digitization to provide enhanced capabilities that position the World Museum at the forefront of digital heritage innovation.</div>
+                    <h2 class="heading-h2">Beyond Standard Digitisation</h2>
+                    <div class="paragraph-18 margin-bottom-1rem">Our solution goes beyond basic digitisation to provide enhanced capabilities that position the World Museum at the forefront of digital heritage innovation.</div>
                 </div>
                 
                 <div style="margin-top: 3rem;">
@@ -513,7 +879,11 @@
                 <div class="heading-max-width-wrapper">
                     <div class="label-heading">Complete Compliance</div>
                     <h2 class="heading-h2">Meeting All Business Requirements</h2>
-                    <div class="paragraph-18 margin-bottom-1rem">Our comprehensive solution addresses every aspect of the World Museum's digitization objectives with measurable outcomes and future-ready capabilities.</div>
+                    <a href="#" id="businessLearnMoreBtn" class="button-tertiary top-padding w-inline-block" style="margin-top: 1.5rem;">
+                        <div>Learn More</div>
+                        <img src="https://cdn.prod.website-files.com/670029dfe54e815631acec08/6700320d92130787c4c76b48_Button%20Arrow.svg" loading="lazy" alt="" class="inline-link-image"/>
+                    </a>
+                    <div class="paragraph-18 margin-bottom-1rem">Our comprehensive solution addresses every aspect of the World Museum's digitisation objectives with measurable outcomes and future-ready capabilities.</div>
                 </div>
                 
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; margin-top: 3rem;">
@@ -553,6 +923,60 @@
             </div>
         </section>
 
+        <!-- Business Requirements Modal -->
+        <div id="businessLearnMoreModal" class="modal-overlay">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 style="margin: 0; font-size: 1.5rem;">Business Requirements Compliance</h2>
+                    <button class="modal-close" id="closeBusinessModal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-section">
+                        <p>To ensure the success of the World Museum’s digitisation process, the 8 key business requirements must be met. Our digitisation proposal addressed each of these with a modern, scalable, and efficient solution designed to preserve the past and power the future.</p>
+                    </div>
+                    <div class="modal-section">
+                        <ol>
+                            <li><strong>Populated Asset Register (Database):</strong> Using AI/ML, we extract data from images to build a searchable, accurate, and consistently formatted asset database.</li>
+                            <li><strong>Digital Location Tracking:</strong> RFID tagging and long-range scanning enable real-time tracking, improving asset management and reducing loss risk.</li>
+                            <li><strong>Standardised Processes:</strong> A streamlined, repeatable digitisation workflow ensures consistent quality and handling across all object types.</li>
+                            <li><strong>High-Quality Imaging:</strong> Advanced imaging tools capture each object in detail, preserving fragile artefacts digitally.</li>
+                            <li><strong>Contextual Enrichment:</strong> AI/ML interprets labels and links cultural and scientific information with community collaboration.</li>
+                            <li><strong>Conservation:</strong> Handling is minimized via portable scanners and RFID systems to ensure object safety.</li>
+                            <li><strong>Access & Repatriation:</strong> Publicly accessible digital records promote global access and cultural reconnection.</li>
+                            <li><strong>Performant Technology:</strong> Our tech stack supports both current and future digitisation requirements with ease.</li>
+                        </ol>
+                    </div>
+
+                    <div class="modal-section">
+                    <h3>Special Considerations</h3>
+                    <p>In addition to meeting the museum’s core business needs, the World Museum holds itself to a high standard concerning cultural responsibility, environmental sustainability, and security. Our digitisation proposal addresses these values in the following ways:</p>
+                    <p>Finally, explained below is how our digitisation proposal addressed the special considerations held by the World Museum:</p>
+                    <div class="considerations-list">
+                        <div class="consideration-item">
+                        <div class="consideration-title">Cultural Collections</div>
+                        <div class="consideration-text">We recognise the importance of cultural sensitivity, particularly regarding Indigenous artefacts. Our digitisation proposal supports the digital repatriation of objects by capturing substantial metadata that communities can access, review, and contribute to. These digital records can also be beneficial in returning items on loan or even permanently to their original communities.</div>
+                        </div>
+                        <div class="consideration-item">
+                        <div class="consideration-title">Environmental</div>
+                        <div class="consideration-text">Sustainability is a core aspect of our proposal. We rely on carbon-neutral cloud storage providers, low-energy LED lighting for imaging, and onsite scanning to reduce transport-related emissions. Our digitisation proposal ensures that digitisation today does not come at the expense of tomorrow.</div>
+                        </div>
+                        <div class="consideration-item">
+                        <div class="consideration-title">Tracking</div>
+                        <div class="consideration-text">Security and tracking are essential when dealing with a massive volume of priceless artefacts. Our RFID system approach allows the museum to monitor where every object is located, who last accessed it, and where it has been moved. This greatly strengthens accountability, enhances workflow, and significantly reduces risk.</div>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div class="modal-section">
+                    <div class="solution-highlight">
+                        <h4>Long-Term Value</h4>
+                        <p style="margin: 0; color: rgba(255,255,255,0.95);">While the initial investment in digitisation is significant, the return is long-lasting. Our digitisation proposal ensures that the World Museum preserves its collection for future generations, creates new opportunities for education, research, and repatriation, whilst leading the way in sustainable, ethical, and accessible practices. This is not just an investment in technology, it is an investment in our shared world history.</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Call to Action -->
         <section class="section section--cta">
             <div class="w-layout-blockcontainer container w-container">
@@ -580,16 +1004,7 @@
                 <div class="footer-newsletter-wrapper">
                     <div class="footer-newsletter-text-wrapper">
                         <div class="heading-h3 margin-bottom-1rem">Ready to Begin Your Digital Transformation?</div>
-                        <div class="paragraph-18">Contact our team to discuss implementation details and answer any questions about our comprehensive digitization solution.</div>
-                    </div>
-                    <div class="footer-form-block w-form">
-                        <form id="email-form" name="email-form" data-name="Email Form" method="get" class="footer-form">
-                            <input class="text-field w-input" maxlength="256" name="email-2" placeholder="Enter your email for project updates" type="email" id="email" required=""/>
-                            <input type="submit" data-wait="Please wait..." class="button-primary primary-button-nav w-button" value="Get Updates"/>
-                            <div class="paragraph-16">
-                                We respect your privacy and will only send project-related updates.
-                            </div>
-                        </form>
+                        <div class="paragraph-18">Contact our team to discuss implementation details and answer any questions about our comprehensive digitisation solution.</div>
                     </div>
                 </div>
                 <div class="w-layout-grid footer-grid">
@@ -600,7 +1015,7 @@
                         <h3 class="footer-title">About Our Solution</h3>
                         <div class="footer-about-text-wrapper">
                             <p class="paragraph-16 margin-bottom-1-5rem">
-                                We specialize in comprehensive museum digitization solutions that combine cutting-edge technology with preservation expertise. Our integrated approach ensures your collection is protected, accessible, and future-ready.<br/>
+                                We specialize in comprehensive museum digitisation solutions that combine cutting-edge technology with preservation expertise. Our integrated approach ensures your collection is protected, accessible, and future-ready.<br/>
                             </p>
                         </div>
                         <p class="footer-title">Key Benefits</p>
@@ -659,10 +1074,7 @@
                 <div class="footer-bottom-links">
                     <div class="footer-copyright-wrapper">
                         <p class="paragraph-16">
-                            Comprehensive Museum Digitization Solution | World Museum Partnership Proposal
-                        </p>
-                        <p class="paragraph-16">
-                            Transforming Cultural Heritage Through Technology
+                            World Museum Partnership Proposal 2025 | Transforming Cultural Heritage Through Technology
                         </p>
                     </div>
                 </div>
@@ -673,5 +1085,105 @@
         <script src="https://cdn.prod.website-files.com/670029dfe54e815631acec08/js/webflow.schunk.36b8fb49256177c8.js" type="text/javascript"></script>
         <script src="https://cdn.prod.website-files.com/670029dfe54e815631acec08/js/webflow.schunk.7cb5a3784443d345.js" type="text/javascript"></script>
         <script src="https://cdn.prod.website-files.com/670029dfe54e815631acec08/js/webflow.b79643b9.5ceace05647fcb32.js" type="text/javascript"></script>
+
+        <!-- Modal JavaScript -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const learnMoreBtn = document.getElementById('learnMoreBtn');
+                const modal = document.getElementById('learnMoreModal');
+                const closeModal = document.getElementById('closeModal');
+
+                // Open modal
+                learnMoreBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                });
+
+                // Close modal function
+                function closeModalFunc() {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = ''; // Restore scrolling
+                }
+
+                // Close modal on close button click
+                closeModal.addEventListener('click', closeModalFunc);
+
+                // Close modal on overlay click
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        closeModalFunc();
+                    }
+                });
+
+                // Close modal on escape key
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && modal.classList.contains('active')) {
+                        closeModalFunc();
+                    }
+                });
+            });
+
+            document.addEventListener('DOMContentLoaded', function () {
+                const timelineBtn = document.getElementById('timelineLearnMoreBtn');
+                const timelineModal = document.getElementById('timelineLearnMoreModal');
+                const closeTimelineModal = document.getElementById('closeTimelineModal');
+
+                // Open Timeline Modal
+                timelineBtn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    timelineModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+
+                // Close Timeline Modal function
+                function closeTimelineFunc() {
+                    timelineModal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+
+                // Close on button
+                closeTimelineModal.addEventListener('click', closeTimelineFunc);
+
+                // Close on outside click
+                timelineModal.addEventListener('click', function (e) {
+                    if (e.target === timelineModal) {
+                        closeTimelineFunc();
+                    }
+                });
+
+                // Close on ESC key
+                document.addEventListener('keydown', function (e) {
+                    if (e.key === 'Escape' && timelineModal.classList.contains('active')) {
+                        closeTimelineFunc();
+                    }
+                });
+            });
+
+            document.addEventListener('DOMContentLoaded', function () {
+                const businessBtn = document.getElementById('businessLearnMoreBtn');
+                const businessModal = document.getElementById('businessLearnMoreModal');
+                const closeBusinessModal = document.getElementById('closeBusinessModal');
+
+                businessBtn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    businessModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+
+                function closeBusinessFunc() {
+                    businessModal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+
+                closeBusinessModal.addEventListener('click', closeBusinessFunc);
+                businessModal.addEventListener('click', function (e) {
+                    if (e.target === businessModal) closeBusinessFunc();
+                });
+                document.addEventListener('keydown', function (e) {
+                    if (e.key === 'Escape' && businessModal.classList.contains('active')) closeBusinessFunc();
+                });
+            });
+        </script>
     </body>
 </html>
