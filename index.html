@@ -718,10 +718,9 @@
                     <div class="heading-small-max-width-wrapper">
                         <div class="label-heading">Pillar 3: RFID Tracking</div>
                         <h2 class="heading-h2 margin-bottom-1rem">Comprehensive Asset Management</h2>
-                        <a href="#timeline" class="button-tertiary w-inline-block">
-                            <div>View Timeline</div>
-                            <img src="https://cdn.prod.website-files.com/670029dfe54e815631acec08/6700320d92130787c4c76b48_Button%20Arrow.svg"
-                                loading="lazy" alt="" class="inline-link-image" />
+                        <a href="#" id="assetLearnMoreBtn" class="button-tertiary top-padding w-inline-block" style="margin-top: 1.5rem; font-weight: 600; text-decoration: underline;">
+                            <div>Learn More</div>
+                            <img src="https://cdn.prod.website-files.com/670029dfe54e815631acec08/6700320d92130787c4c76b48_Button%20Arrow.svg" loading="lazy" alt="" class="inline-link-image"/>
                         </a>
                     </div>
                     <div class="feature-list-wrapper">
@@ -763,6 +762,98 @@
             </div>
         </div>
     </section>
+
+<!-- Asset Management Modal -->
+    <div id="assetLearnMoreModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 style="margin: 0; font-size: 1.5rem;">Comprehensive Asset Management</h2>
+                <button class="modal-close" id="closeAssetModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3>RFID Tracking Overview</h3>
+                    <p>Our comprehensive RFID solution provides real-time tracking for every artifact in the collection. By attaching RFID chips to every artifact, we we always know what's where. Fast, hands-off, zero guesswork.</p>
+                    <p>The system includes 25M+ standard tags for the main collection, plus specialized cryogenic-rated tags for frozen specimens stored at -80°C. Long-range readers continuously monitor the building, providing instant alerts if any object moves into or out of unauthorized areas.</p>
+                </div>
+
+                <div class="modal-section">
+                    <h3>Meeting Key Business Requirements</h3>
+                    <div class="requirements-grid">
+                        <div class="requirement-item">Populated Asset Register</div>
+                        <div class="requirement-item">Real-Time Location Tracking</div>
+                        <div class="requirement-item">Standardized Processes</div>
+                        <div class="requirement-item">Enhanced Security</div>
+                        <div class="requirement-item">Conservation Focus</div>
+                        <div class="requirement-item">Global Access Ready</div>
+                    </div>
+                    <p>Populated asset register – every scan auto-adds tag ID, photo and metadata; a quick human glance keeps entries spotless.</p>
+                    <p>Locations are recorded and tracked – each tag knows its designated zone; fixed readers monitor movements in real time.</p>
+                    <p>Standardised processes – RFID + AI logging means the same workflow for every object, every time.</p>
+                    <p>Imaging & context – Tag data ties directly into the AI image-capture setup, enriching records with photos and additional details..</p>
+                    <p>Conservation and security – movement alerts slash loss and damage risk, and everything is encrypted end-to-end.</p>
+                    <p>Access & tech backbone – clean, shareable data set ready for digital repatriation, research portals and future upgrades..</p>
+                </div>
+
+                <div class="modal-section">
+                    <h3>Implementation Process</h3>
+                    <p>Our systematic rollout involves tagging, scanning, printing, and recording for all 25 million objects. The process streams data directly into the central database alongside AI image capture systems.</p>
+                    <p>Readers can process approximately 1,200 tags per second, with AI-powered video verification ensuring accuracy for every movement throughout the facility.</p>
+                </div>
+
+                <div class="modal-section">
+                    <h3>Equipment & Investment Summary</h3>
+                    <div class="object-categories">
+                        <div class="category-item">
+                            <div class="category-name">RFID UHF Tags (25M)</div>
+                            <div class="category-stats">$5,750,000 AUD</div>
+                        </div>
+                        <div class="category-item">
+                            <div class="category-name">Cryogenic Labels (380 rolls)</div>
+                            <div class="category-stats">$380,000 AUD</div>
+                        </div>
+                        <div class="category-item">
+                            <div class="category-name">Fixed RFID Readers (350)</div>
+                            <div class="category-stats">$716,100 AUD</div>
+                        </div>
+                        <div class="category-item">
+                            <div class="category-name">Handheld Scanners (10)</div>
+                            <div class="category-stats">$30,000 AUD</div>
+                        </div>
+                        <div class="category-item">
+                            <div class="category-name">Label Printer System</div>
+                            <div class="category-stats">$4,300 AUD</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-section">
+                    <h3>Technical Challenges & Solutions</h3>
+                    <div class="considerations-list">
+                        <div class="consideration-item">
+                            <div class="consideration-title">Signal Interference</div>
+                            <div class="consideration-text">Wrap cables with foil-braid 'multiShield', and optimised reader placement throughout the facility.</div>
+                        </div>
+                        <div class="consideration-item">
+                            <div class="consideration-title">False Alert Prevention</div>
+                            <div class="consideration-text">Precision-tuned reader power levels and advanced software filtering eliminate unnecessary notifications.</div>
+                        </div>
+                        <div class="consideration-item">
+                            <div class="consideration-title">Data Security</div>
+                            <div class="consideration-text">End-to-end encryption protects all tracking data and movement alerts, ensuring complete information security.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-section">
+                    <div class="solution-highlight">
+                        <h4>Complete Asset Visibility</h4>
+                        <p style="margin: 0; color: rgba(255,255,255,0.95);">This RFID infrastructure provides the World Museum with unprecedented asset visibility and control. Every object becomes trackable, searchable, and secure, while automated processes reduce manual labor and human error. The system integrates seamlessly with our vision capture and AI analysis components for a truly comprehensive digitisation solution.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Timeline Section -->
     <section id="timeline" class="section">
@@ -1531,6 +1622,31 @@
             });
             document.addEventListener('keydown', function (e) {
                 if (e.key === 'Escape' && businessModal.classList.contains('active')) closeBusinessFunc();
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const assetBtn = document.getElementById('assetLearnMoreBtn');
+            const assetModal = document.getElementById('assetLearnMoreModal');
+            const closeAssetModal = document.getElementById('closeAssetModal');
+
+            assetBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                assetModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+
+            function closeAssetFunc() {
+                assetModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            closeAssetModal.addEventListener('click', closeAssetFunc);
+            assetModal.addEventListener('click', function (e) {
+                if (e.target === assetModal) closeAssetFunc();
+            });
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && assetModal.classList.contains('active')) closeAssetFunc();
             });
         });
     </script>
