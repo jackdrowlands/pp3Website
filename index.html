@@ -1649,6 +1649,218 @@
                 if (e.key === 'Escape' && assetModal.classList.contains('active')) closeAssetFunc();
             });
         });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Modal elements
+            const learnMoreModal = document.getElementById('learnMoreModal');
+            const timelineModal = document.getElementById('timelineLearnMoreModal');
+            const businessModal = document.getElementById('businessLearnMoreModal');
+            const assetModal = document.getElementById('assetLearnMoreModal');
+            
+            // Close buttons
+            const closeModal = document.getElementById('closeModal');
+            const closeTimelineModal = document.getElementById('closeTimelineModal');
+            const closeBusinessModal = document.getElementById('closeBusinessModal');
+            const closeAssetModal = document.getElementById('closeAssetModal');
+            
+            // Learn more buttons (still functional for manual opening)
+            const learnMoreBtn = document.getElementById('learnMoreBtn');
+            const timelineBtn = document.getElementById('timelineLearnMoreBtn');
+            const businessBtn = document.getElementById('businessLearnMoreBtn');
+            const assetBtn = document.getElementById('assetLearnMoreBtn');
+
+            // Track which modals have been shown to prevent repeated openings
+            const modalShown = {
+                learnMore: false,
+                timeline: false,
+                business: false,
+                asset: false
+            };
+
+            // Track active modal to prevent multiple modals open at once
+            let activeModal = null;
+
+            // Generic modal open/close functions
+            function openModal(modal, type) {
+                if (activeModal && activeModal !== modal) {
+                    closeActiveModal();
+                }
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                activeModal = modal;
+                modalShown[type] = true;
+            }
+
+            function closeActiveModal() {
+                if (activeModal) {
+                    activeModal.classList.remove('active');
+                    document.body.style.overflow = '';
+                    activeModal = null;
+                }
+            }
+
+            // Close modal functions for each modal
+            function closeLearnMoreFunc() {
+                learnMoreModal.classList.remove('active');
+                document.body.style.overflow = '';
+                if (activeModal === learnMoreModal) activeModal = null;
+            }
+
+            function closeTimelineFunc() {
+                timelineModal.classList.remove('active');
+                document.body.style.overflow = '';
+                if (activeModal === timelineModal) activeModal = null;
+            }
+
+            function closeBusinessFunc() {
+                businessModal.classList.remove('active');
+                document.body.style.overflow = '';
+                if (activeModal === businessModal) activeModal = null;
+            }
+
+            function closeAssetFunc() {
+                assetModal.classList.remove('active');
+                document.body.style.overflow = '';
+                if (activeModal === assetModal) activeModal = null;
+            }
+
+            // Manual button click handlers
+            learnMoreBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                openModal(learnMoreModal, 'learnMore');
+            });
+
+            timelineBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                openModal(timelineModal, 'timeline');
+            });
+
+            businessBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                openModal(businessModal, 'business');
+            });
+
+            assetBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                openModal(assetModal, 'asset');
+            });
+
+            // Close button event listeners
+            closeModal.addEventListener('click', closeLearnMoreFunc);
+            closeTimelineModal.addEventListener('click', closeTimelineFunc);
+            closeBusinessModal.addEventListener('click', closeBusinessFunc);
+            closeAssetModal.addEventListener('click', closeAssetFunc);
+
+            // Close on overlay click
+            [learnMoreModal, timelineModal, businessModal, assetModal].forEach((modal, index) => {
+                const closeFunctions = [closeLearnMoreFunc, closeTimelineFunc, closeBusinessFunc, closeAssetFunc];
+                modal.addEventListener('click', function (e) {
+                    if (e.target === modal) {
+                        closeFunctions[index]();
+                    }
+                });
+            });
+
+            // Close on escape key
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    if (learnMoreModal.classList.contains('active')) closeLearnMoreFunc();
+                    if (timelineModal.classList.contains('active')) closeTimelineFunc();
+                    if (businessModal.classList.contains('active')) closeBusinessFunc();
+                    if (assetModal.classList.contains('active')) closeAssetFunc();
+                }
+            });
+
+            // Intersection Observer for auto-opening modals on scroll
+            const observerOptions = {
+                threshold: 0.3, // Trigger when 30% of the section is visible
+                rootMargin: '-10% 0px -10% 0px' // Add some margin to fine-tune trigger point
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const sectionId = entry.target.id;
+                        
+                        // Add a small delay to make the experience feel more natural
+                        setTimeout(() => {
+                            switch (sectionId) {
+                                case 'solution':
+                                    if (!modalShown.learnMore) {
+                                        openModal(learnMoreModal, 'learnMore');
+                                    }
+                                    break;
+                                case 'timeline':
+                                    if (!modalShown.timeline) {
+                                        openModal(timelineModal, 'timeline');
+                                    }
+                                    break;
+                                case 'rfid-technology':
+                                    if (!modalShown.asset) {
+                                        openModal(assetModal, 'asset');
+                                    }
+                                    break;
+                            }
+                        }, 800); // 800ms delay for natural feel
+                    }
+                });
+            }, observerOptions);
+
+            // Observe the relevant sections
+            const solutionSection = document.getElementById('solution');
+            const timelineSection = document.getElementById('timeline');
+            const rfidSection = document.getElementById('rfid-technology');
+            
+            // Special observer for business requirements section (near the end)
+            const businessSection = document.querySelector('.section:has(#businessLearnMoreBtn)');
+            
+            if (solutionSection) observer.observe(solutionSection);
+            if (timelineSection) observer.observe(timelineSection);
+            if (rfidSection) observer.observe(rfidSection);
+            
+            // Business modal opens when user scrolls to business requirements section
+            if (businessSection) {
+                const businessObserver = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting && !modalShown.business) {
+                            setTimeout(() => {
+                                openModal(businessModal, 'business');
+                            }, 1000);
+                        }
+                    });
+                }, { threshold: 0.4 });
+                
+                businessObserver.observe(businessSection);
+            }
+
+            // Auto-close modal after a certain time if user doesn't interact
+            let modalTimeout;
+            function setModalTimeout() {
+                clearTimeout(modalTimeout);
+                modalTimeout = setTimeout(() => {
+                    if (activeModal) {
+                        closeActiveModal();
+                    }
+                }, 15000); // Auto-close after 15 seconds
+            }
+
+            // Reset timeout when modal opens
+            const originalOpenModal = openModal;
+            openModal = function(modal, type) {
+                originalOpenModal(modal, type);
+                setModalTimeout();
+            };
+
+            // Clear timeout when user interacts with modal
+            [learnMoreModal, timelineModal, businessModal, assetModal].forEach(modal => {
+                modal.addEventListener('click', () => {
+                    clearTimeout(modalTimeout);
+                });
+                modal.addEventListener('scroll', () => {
+                    clearTimeout(modalTimeout);
+                });
+            });
+        });
     </script>
 </body>
 
